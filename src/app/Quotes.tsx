@@ -1,5 +1,6 @@
 import { SectionTitle } from "@/components/Font";
 import QuoteCard from "@/components/QuoteCard";
+import { Separator } from "@/components/Utils";
 
 const QUOTES: { name: string, review: string }[] = [
   {
@@ -15,13 +16,16 @@ const QUOTES: { name: string, review: string }[] = [
 export default function Quotes() {
 
   return (
-    <section className="py-10">
-      <SectionTitle text="OPINIONES DE NUESTROS CLIENTES" />
-      <div className="grid grid-cols-2 gap-3 mt-6 px-28">
-        {
-          QUOTES.map((q, i) => (<QuoteCard key={i} quote={q} />))
-        }
-      </div>
-    </section>
+    <>
+      <section className="py-10">
+        <SectionTitle text="OPINIONES DE NUESTROS CLIENTES" />
+        <div className="grid grid-cols-2 gap-3 mt-6 px-28">
+          {
+            QUOTES.map((q, i) => (<QuoteCard key={i} quote={q} />))
+          }
+        </div>
+      </section>
+      <Separator />
+    </>
   );
 }
