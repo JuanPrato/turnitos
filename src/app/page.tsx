@@ -3,6 +3,8 @@ import About from './About'
 import Services from './Services'
 import Staff from './Staff'
 import Quotes from './Quotes'
+import MakeConsult from './MakeConsult'
+import Footer from './Footer'
 
 export default function Home() {
   return (
@@ -14,7 +16,8 @@ export default function Home() {
           <Services />
           <Staff />
           <Quotes />
-          <div className='h-[150px]'></div>
+          <MakeConsult />
+          <Footer />
         </div>
         {/*
        SECCIONES:
