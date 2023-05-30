@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import { SectionTitle } from "@/components/Font";
-import { EmailInput, PhoneInput, TextAreInput, TextInput } from "@/components/form/Input";
+import { EmailInput, PhoneInput, TextAreaInput, TextInput } from "@/components/form/Input";
 import Button from "@/components/button";
 
 export default function MakeConsult() {
@@ -18,10 +18,10 @@ export default function MakeConsult() {
           width={1080}
         />
         <form className="flex flex-col p-5 gap-4">
-          <TextInput label="Nombre completo" />
-          <EmailInput label="Mail" />
-          <PhoneInput label="Telefono" />
-          <TextAreInput label="Consulta" />
+          <TextInput label="Nombre completo" name="name" />
+          <EmailInput label="Mail" name="mail" />
+          <PhoneInput label="Telefono" name="phone" />
+          <TextAreaInput label="Consulta" name="consult" />
           <Button>ENVIAR</Button>
         </form>
       </div>
