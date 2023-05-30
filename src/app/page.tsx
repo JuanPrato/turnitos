@@ -19,19 +19,6 @@ export default function Home() {
           <MakeConsult />
           <Footer />
         </div>
-        {/*
-       SECCIONES:
-        - RESERVE YOUR VISIT:
-          - 
-        - CONTACT FOR QUESTIONS:
-          - NAME
-          - EMAIL
-          - QUESTION
-          - SEND BUTTON
-        - FOOTER:
-          - NAVBAR
-          - SIGN IN REDIRECT
-      */}
       </main>
     </>
   )

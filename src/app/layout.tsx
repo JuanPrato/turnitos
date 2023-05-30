@@ -15,7 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={monserrat.className}>{children}</body>
+      <body className={[monserrat.className, "bg-gray-100"].join(" ")}>{children}</body>
     </html>
   )
 }
