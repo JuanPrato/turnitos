@@ -12,7 +12,7 @@ const SERVICES = [
 export default function Services() {
 
   return (
-    <section className="px-20">
+    <section className="px-20 pt-10" id="services">
       <SectionTitle text="NUESTROS SERVICIOS" />
       <div className="flex gap-3 py-10">
         {

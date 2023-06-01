@@ -1,3 +1,4 @@
+import { twMerge } from 'tailwind-merge'
 import './globals.css'
 import { Montserrat } from 'next/font/google'
 
@@ -14,8 +15,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={[monserrat.className, "bg-gray-100"].join(" ")}>{children}</body>
+    <html lang="en" style={{ scrollBehavior: "smooth" }}>
+      <body className={twMerge(monserrat.className, "bg-gray-100")}>{children}</body>
     </html>
   )
 }

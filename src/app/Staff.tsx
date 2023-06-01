@@ -25,7 +25,7 @@ const STAFF: Employee[] = [
 export default function Staff() {
   return (
     <>
-      <section className="py-10">
+      <section className="py-10" id="staff">
         <SectionTitle text="NUESTRO EQUIPO" />
         <div className="flex justify-center gap-5 pt-5">
           {
