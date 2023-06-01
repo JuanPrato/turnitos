@@ -3,14 +3,15 @@
 import { ChangeEvent, useState } from "react";
 import { Badge } from "../Badge";
 import { regexPhoneNumber } from "@/utils/constants";
+import { twMerge } from "tailwind-merge";
 
 interface Props {
   label: string;
   name: string;
 }
 
-const styles = "flex flex-col font-semibold";
-const inputStyles = "p-2 rounded ring ring-black ring-[2px]";
+const styles = "block mb-2 font-bold";
+const inputStyles = "text-black w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500";
 
 export function TextInput({ label, name }: Props) {
   return (
@@ -56,9 +57,9 @@ interface TextAreaProps {
 
 export function TextAreaInput({ label, name }: TextAreaProps) {
   return (
-    <label className={[styles, "flex-grow"].join(" ")}>
+    <label className={[styles, "flex flex-col flex-grow"].join(" ")}>
       {label}
-      <textarea className={[inputStyles, "flex-grow"].join(" ")} name={name} />
+      <textarea className={twMerge(inputStyles, "flex-grow resize-none")} name={name} />
     </label>
   );
 }
@@ -80,6 +81,7 @@ export function SelectInput({ label, name, disabled }: SelectProps) {
         name={name}
       >
         <option>Alisado</option>
+        <option>Alisado doble</option>
         <option>Corte</option>
         <option>Color</option>
         <option>Otra cosa</option>
@@ -93,26 +95,37 @@ export function SelectInput({ label, name, disabled }: SelectProps) {
 export function MultipleSelectInput({ label, name, disabled }: SelectProps) {
 
   const [values, setValues] = useState<string[]>([]);
-  console.log(values);
   return (
     <label className={styles}>
       {label}
-      <ul className="pb-1 flex gap-3"><Badge>Alisado</Badge></ul>
+      <ul className="pb-1 flex gap-3">
+        {
+          values.map((v, i) => (<Badge key={i} onClick={() => setValues(vs => vs.filter(it => it !== v))}>{v} x</Badge>))
+        }
+      </ul>
       <select
         className={inputStyles}
         disabled={disabled}
         name={name}
-        multiple={true}
-        value={values}
-        onChange={(e) => setValues(v => Array.from(new Set([...v, e.currentTarget.value])))}
+        value={"SELECCIONA LOS SERVICIOS"}
+        onChange={(e) =>
+          setValues(v => {
+            if (values.includes(e.target.value)) {
+              return values.filter(vl => vl !== e.target.value);
+            }
+            return [...v, e.target.value];
+          })
+        }
       >
+        <option disabled defaultChecked>SELECCIONA LOS SERVICIOS</option>
         <option>Alisado</option>
+        <option>Alisado doble</option>
         <option>Corte</option>
         <option>Color</option>
         <option>Otra cosa</option>
         <option>Una cosa más</option>
       </select>
-    </label>
+    </label >
   );
 
 }
@@ -121,7 +134,7 @@ export function CalendarInput({ label, name }: Props) {
   return (
     <label className={styles}>
       {label}
-      <input className={inputStyles} type="date" />
+      <input className={twMerge(inputStyles, "py-1")} type="date" name={name} />
     </label>
   );
 }

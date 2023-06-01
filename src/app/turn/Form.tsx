@@ -17,24 +17,27 @@ export default function Form() {
 
   return (
     <form
-      className="flex flex-col gap-4 bg-gray-400 p-5 rounded-lg max-w-xl mx-auto bg-opacity-70 ring ring-black"
+      className="flex flex-col gap-4 text-gray-300 bg-black p-16 rounded-lg max-w-xl mx-auto bg-opacity-70"
     >
-      <SectionTitle text="AGENDA TU TURNO" />
-      <Separator />
-      <TextInput label="NOMBRE" name="name" />
-      <PhoneInput label="CELULAR DE CONTACTO" name="phone" />
+      <SectionTitle text="AGENDA TU TURNO" className="pb-5 border-b border-white" />
+      <TextInput label="NOMBRE:" name="name" />
+      <PhoneInput label="CELULAR DE CONTACTO:" name="phone" />
       <div>
-        <MultipleSelectInput label="SERVICIOS" name="services" />
+        <MultipleSelectInput label="SERVICIOS:" name="services" />
       </div>
+      <legend className="font-bold">DIA Y HORARIO:</legend>
       <div className="grid gap-5 md:grid-cols-2">
-        <CalendarInput label="ELIGE TU DIA" name="day" />
-        <SelectInput label="HORARIO DE INICIO" name="time" disabled />
+        <CalendarInput label="DIA" name="day" />
+        <SelectInput label="HORARIO" name="time" disabled />
       </div>
+      <legend className="font-bold">DIA Y HORARIO ALTERNATIVO:</legend>
       <div className="grid gap-5 md:grid-cols-2">
-        <CalendarInput label="ELIGE TU DIA ALTERNATIVO" name="day" />
-        <SelectInput label="HORARIO ALTERNATIVO" name="time" disabled />
+        <CalendarInput label="DIA" name="day" />
+        <SelectInput label="HORARIO" name="time" disabled />
       </div>
-      <Button>ENVIAR</Button>
+      <div className="border-t border-white pt-5 flex flex-col">
+        <Button>ENVIAR</Button>
+      </div>
     </form>
   );
 }

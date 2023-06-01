@@ -7,8 +7,10 @@ export default function Turn() {
     <div className="h-screen flex flex-col">
       <Nav />
       <div
-        className="grow grid place-items-center bg-no-repeat bg-center bg-cover"
-        style={{ backgroundImage: 'url(/herramientas.png)' }}
+        className="absolute top-0 left-0 h-screen w-screen bg-no-repeat bg-cover -z-10 blur"
+        style={{ backgroundImage: 'url(/herramientas.png)' }}></div>
+      <div
+        className="grow grid place-items-center"
       >
         <Form />
       </div>
