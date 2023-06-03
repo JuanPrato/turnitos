@@ -1,13 +1,15 @@
 import Image from "next/image";
 
+export type Quote = { name: string, review: string };
+
 interface Props {
-  quote: { name: string, review: string }
+  quote: Quote;
 }
 
 export default function QuoteCard({ quote: { name, review } }: Props) {
 
   return (
-    <div className="bg-gray-200 p-10 flex flex-col justify-between gap-4 relative">
+    <div className="carousel-item box-border w-1/2 bg-gray-200 p-7 flex flex-col justify-between gap-4 relative">
       <blockquote className="text-lg">
         {review}
       </blockquote>
