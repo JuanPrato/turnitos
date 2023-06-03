@@ -17,8 +17,8 @@ export default function Home() {
           <Staff />
           <Quotes />
           <MakeConsult />
-          <Footer />
         </div>
+        <Footer />
       </main>
     </>
   )
