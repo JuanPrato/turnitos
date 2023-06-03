@@ -8,16 +8,26 @@ import { twMerge } from "tailwind-merge";
 interface Props {
   label: string;
   name: string;
+  placeholder?: string;
+}
+
+type TextAreaProps = Props & {
+  label: string;
+  name: string;
+}
+
+type SelectProps = Props & {
+  disabled?: boolean
 }
 
 const styles = "block mb-2 font-bold";
 const inputStyles = "text-black w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500";
 
-export function TextInput({ label, name }: Props) {
+export function TextInput({ label, name, placeholder }: Props) {
   return (
     <label className={styles}>
       {label}
-      <input type="text" name={name} className={inputStyles} />
+      <input type="text" name={name} placeholder={placeholder} className={inputStyles} />
     </label>
   );
 }
@@ -31,7 +41,7 @@ export function EmailInput({ label, name }: Props) {
   );
 }
 
-export function PhoneInput({ label, name }: Props) {
+export function PhoneInput({ label, name, placeholder }: Props) {
 
   const [value, setValue] = useState<string>('');
 
@@ -45,14 +55,9 @@ export function PhoneInput({ label, name }: Props) {
   return (
     <label className={styles}>
       {label}
-      <input type="text" name={name} value={value} className={inputStyles} onChange={onChange} pattern={regexPhoneNumber.source} />
+      <input type="text" name={name} value={value} placeholder={placeholder} className={inputStyles} onChange={onChange} pattern={regexPhoneNumber.source} />
     </label>
   )
-}
-
-interface TextAreaProps {
-  label: string;
-  name: string;
 }
 
 export function TextAreaInput({ label, name }: TextAreaProps) {
@@ -62,12 +67,6 @@ export function TextAreaInput({ label, name }: TextAreaProps) {
       <textarea className={twMerge(inputStyles, "flex-grow resize-none")} name={name} />
     </label>
   );
-}
-
-interface SelectProps {
-  label: string;
-  name: string;
-  disabled?: boolean
 }
 
 export function SelectInput({ label, name, disabled }: SelectProps) {

@@ -20,8 +20,8 @@ export default function Form() {
       className="flex flex-col gap-4 text-gray-300 bg-black p-16 rounded-lg max-w-xl mx-auto bg-opacity-70"
     >
       <SectionTitle text="AGENDA TU TURNO" className="pb-5 border-b border-white" />
-      <TextInput label="NOMBRE:" name="name" />
-      <PhoneInput label="CELULAR DE CONTACTO:" name="phone" />
+      <TextInput label="NOMBRE:" name="name" placeholder="Juan Manuel Pranto" />
+      <PhoneInput label="CELULAR DE CONTACTO:" name="phone" placeholder="1159882634" />
       <div>
         <MultipleSelectInput label="SERVICIOS:" name="services" />
       </div>

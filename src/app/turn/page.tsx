@@ -10,7 +10,7 @@ export default function Turn() {
         className="absolute top-0 left-0 h-screen w-screen bg-no-repeat bg-cover -z-10 blur"
         style={{ backgroundImage: 'url(/herramientas.png)' }}></div>
       <div
-        className="grow grid place-items-center"
+        className="grow grid place-items-center bg-transparent"
       >
         <Form />
       </div>
