@@ -1,6 +1,6 @@
 "use client"
 
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useRef, useState } from "react";
 import { Badge } from "../Badge";
 import { regexPhoneNumber } from "@/utils/constants";
 import { twMerge } from "tailwind-merge";
@@ -30,6 +30,21 @@ export function TextInput({ label, name, placeholder }: Props) {
       <input type="text" name={name} placeholder={placeholder} className={inputStyles} />
     </label>
   );
+}
+
+export function PasswordInput({ label, name, placeholder }: Props) {
+
+  const [show, setShow] = useState<boolean>(false)
+
+  return (
+    <label className={styles}>
+      {label}
+      <div className="join flex">
+        <input type={show ? "text" : "password"} name={name} placeholder={placeholder} className={twMerge(inputStyles, "join-item")} />
+        <button type="button" className="btn join-item" onClick={() => setShow(s => !s)}>👁️</button>
+      </div>
+    </label>
+  )
 }
 
 export function EmailInput({ label, name }: Props) {
