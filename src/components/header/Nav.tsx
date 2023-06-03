@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Nav() {
   return (
-    <nav className="px-3 bg-black text-white">
+    <nav className="px-3 bg-black text-white sticky">
       <div className='flex justify-between items-center max-w-7xl m-auto'>
         <Link href="/" className="p-3 text-xl font-semibold w-1/4 cursor-pointer"><h1>Belleza Express</h1></Link>
         <section className="flex justify-evenly grow text-sm">
