@@ -15,8 +15,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" style={{ scrollBehavior: "smooth" }}>
-      <body className={twMerge(monserrat.className, "bg-gray-100")}>{children}</body>
+    <html lang="en" style={{ scrollBehavior: "smooth" }} data-theme="corporate">
+      <body className={twMerge(monserrat.className, "overflow-x-hidden")}>{children}</body>
     </html>
   )
 }
