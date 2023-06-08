@@ -16,25 +16,25 @@ export default function AdminTurnModal({ turn }: { turn: Turn }) {
       <dialog className="modal" ref={ref}>
         <form method="dialog" className="modal-box flex flex-col gap-10 bg-gray-100">
           <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-          <h3 className="text-center text-xl">DETALLES DE SOLICITUD: # {turn.id}</h3>
-          <fieldset className="ring ring-gray-400 px-2 rounded">
-            <legend className="bg-gray-100 py-1 px-1 text-lg">DATOS DEL TURNO:</legend>
-            <label className="label text-lg">FECHA:
+          <h3 className="text-center text-xl font-semibold">DETALLES DE SOLICITUD: # {turn.id}</h3>
+          <fieldset className="ring ring-gray-200 px-2 rounded">
+            <h3 className="py-1 px-1 text-md font-semibold">DATOS DEL TURNO:</h3>
+            <label className="label text-md">FECHA:
               <p>{dayjs(turn.date).format('DD/MM/YYYY')}</p>
             </label>
-            <label className="label text-lg">EMPLEADO SOLICITADO:
+            <label className="label text-md">EMPLEADO SOLICITADO:
               <p>{turn.employee}</p>
             </label>
-            <label className="label text-lg">SERVICIOS:
+            <label className="label text-md">SERVICIOS:
               <p>{listFormatter.format(turn.services)}</p>
             </label>
           </fieldset>
-          <fieldset className="ring ring-gray-400 px-2 rounded">
-            <legend className="bg-gray-100 py-1 px-1 text-lg">DATOS DEL CLIENTE:</legend>
-            <label className="label text-lg">NOMBRE:
+          <fieldset className="ring ring-gray-200 px-2 rounded">
+            <h3 className="py-1 px-1 text-md font-semibold">DATOS DEL CLIENTE:</h3>
+            <label className="label text-md">NOMBRE:
               <p>{turn.clientName}</p>
             </label>
-            <label className="label text-lg">NÚMERO:
+            <label className="label text-md">NÚMERO:
               <p>{turn.clientPhone}</p>
             </label>
           </fieldset>
