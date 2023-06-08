@@ -22,9 +22,8 @@ export default function Form() {
       <SectionTitle text="AGENDA TU TURNO" className="pb-5 border-b border-white" />
       <TextInput label="NOMBRE:" name="name" placeholder="Juan Manuel Pranto" />
       <PhoneInput label="CELULAR DE CONTACTO:" name="phone" placeholder="1159882634" />
-      <div>
-        <MultipleSelectInput label="SERVICIOS:" name="services" />
-      </div>
+      <MultipleSelectInput label="SERVICIOS:" name="services" />
+      <MultipleSelectInput label="PROFESIONAL:" name="employee" disabled />
       <legend className="font-bold">DIA Y HORARIO:</legend>
       <div className="grid gap-5 md:grid-cols-2">
         <CalendarInput label="DIA" name="day" />

@@ -1,15 +1,13 @@
+import { createMiddlewareClient } from "@supabase/auth-helpers-nextjs";
 import { NextRequest, NextResponse } from "next/server";
 
-export function middleware(request: NextRequest) {
-  const log = request.cookies.get("log")?.value;
-
-  if (log) {
-    return NextResponse.next();
-  }
-
-  return NextResponse.redirect(new URL("/admin", request.url));
+export async function middleware(request: NextRequest) {
+  const res = NextResponse.next();
+  const supabase = createMiddlewareClient({ req: request, res });
+  await supabase.auth.getSession();
+  return res;
 }
 
 export const config = {
-  matcher: "/admin/dashboard",
+  matcher: ["/admin", "/admin/:path*"],
 };
