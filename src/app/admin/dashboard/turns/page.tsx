@@ -6,7 +6,9 @@ function AdminTurns() {
     <section>
       <h2 className="text-center text-3xl pt-4 mb-2">TURNOS PEDIDOS</h2>
       <div className="divider" />
-      <TurnsTable />
+      <div className="max-w-4xl mx-auto">
+        <TurnsTable />
+      </div>
     </section>
   )
 }
