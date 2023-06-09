@@ -41,7 +41,6 @@ export default function AdminTurnModal({ turn }: { turn: Turn }) {
           <div className="grid grid-cols-2 w-full gap-3">
             <button className="btn btn-success grow">ACEPTAR</button>
             <button className="btn btn-error grow">RECHAZAR</button>
-            <button className="btn btn-info col-span-2">CLOSE</button>
           </div>
         </form>
         <form method="dialog" className="modal-backdrop">
