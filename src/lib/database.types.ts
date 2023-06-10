@@ -53,19 +53,25 @@ export interface Database {
           client: string
           created_at: string | null
           employee: string
+          end_at: string | null
           id: number
+          start_at: string | null
         }
         Insert: {
           client: string
           created_at?: string | null
           employee: string
+          end_at?: string | null
           id?: number
+          start_at?: string | null
         }
         Update: {
           client?: string
           created_at?: string | null
           employee?: string
+          end_at?: string | null
           id?: number
+          start_at?: string | null
         }
         Relationships: [
           {
