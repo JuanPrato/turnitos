@@ -17,6 +17,7 @@ type TextAreaProps = Props & {
 }
 
 type SelectProps = Props & {
+  items: string[]
   disabled?: boolean
 }
 
@@ -84,7 +85,7 @@ export function TextAreaInput({ label, name }: TextAreaProps) {
   );
 }
 
-export function SelectInput({ label, name, disabled }: SelectProps) {
+export function SelectInput({ label, name, disabled, items = [] }: SelectProps) {
 
   return (
     <label className={styles}>
@@ -106,7 +107,7 @@ export function SelectInput({ label, name, disabled }: SelectProps) {
 
 }
 
-export function MultipleSelectInput({ label, name, disabled }: SelectProps) {
+export function MultipleSelectInput({ label, name, items, disabled }: SelectProps) {
 
   const [values, setValues] = useState<string[]>([]);
   return (
@@ -132,12 +133,9 @@ export function MultipleSelectInput({ label, name, disabled }: SelectProps) {
         }
       >
         <option disabled defaultChecked>SELECCIONA LOS SERVICIOS</option>
-        <option>Alisado</option>
-        <option>Alisado doble</option>
-        <option>Corte</option>
-        <option>Color</option>
-        <option>Otra cosa</option>
-        <option>Una cosa más</option>
+        {
+          items.map(i => (<option key={i}>{i}</option>))
+        }
       </select>
     </label >
   );

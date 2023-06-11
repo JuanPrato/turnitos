@@ -5,10 +5,22 @@ import Button from "@/components/button";
 import { onSubmit } from "@/utils/supabase-action";
 import { useRouter } from "next/navigation";
 import { PATHS } from "@/utils/constants";
+import { useEffect } from "react";
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 
 export default function LogIn() {
 
   const router = useRouter();
+
+  useEffect(() => {
+    (async () => {
+      const supabase = createClientComponentClient();
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!!session) {
+        router.push(PATHS.ADMIN_DASHBOARD);
+      }
+    })()
+  }, []);
 
   const submit = async (formData: FormData) => {
     const result = await onSubmit(formData);
