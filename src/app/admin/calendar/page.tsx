@@ -1,10 +1,54 @@
-import { getTurns } from "@/utils/supabase-server";
-import dayjs from "dayjs";
+import { Turn, getTurns } from "@/utils/supabase-server";
+import dayjs, { Dayjs } from "dayjs";
+import es from "dayjs/locale/es";
+import localeData from "dayjs/plugin/localeData"
 import { ReactNode } from "react";
+
+dayjs.locale(es);
+dayjs.extend(localeData);
+
+const TILE_DIM = "h-[100px] w-[175px]";
+const DAY_TILE_DIM = "h-[75px] w-[175px]";
+
+const createClassNames = (styles: string | string[]): string => {
+  if (typeof styles === "string") {
+    return styles;
+  }
+  return styles.join(" ");
+}
+
+function DayTile({ time }: { time?: Dayjs }) {
+  return (
+    <div className={createClassNames([DAY_TILE_DIM, "p-2 relative border-b border-gray-200 grid place-items-center"])}>
+      {time ? `${time.format("ddd DD").toUpperCase()}` : ""}
+    </div>
+  );
+}
+
+function DateTile({ turn }: { turn: Turn }) {
+
+  const hours = dayjs(turn.endDate).hour() - dayjs(turn.date).hour();
+
+  return (
+    <div className={createClassNames([TILE_DIM, "p-2 relative border border-gray-200"])}>
+      <div className={createClassNames([`min-h-[${hours * 100}px]`, "card shadow-xl bg-white z-10 border-t-4 border-blue-400 p-2 flex flex-col"])}>
+        <div className="">
+          <p className="">CLIENTE:</p>
+          <p>{turn.clientName}</p>
+        </div>
+        <div className="flex-grow">
+          <p className="mt-2">EMPLEADO:</p>
+          <p>{turn.employee}</p>
+        </div>
+        <p className="text-xs text-gray-400">{dayjs(turn.date).format("HH:mm")}-{dayjs(turn.endDate).format("HH:mm")}</p>
+      </div>
+    </div>
+  );
+}
 
 function Tile({ text }: { text: string }) {
   return (
-    <div className="p-2 h-[100px] border border-black">
+    <div className={createClassNames([TILE_DIM, "p-2 relative border border-gray-200"])}>
       {text}
     </div>
   )
@@ -12,7 +56,9 @@ function Tile({ text }: { text: string }) {
 
 function HourTile({ text }: { text: string }) {
   return (
-    <div className="text-xl border border-black grid place-items-center">{text}</div>
+    <div className={createClassNames([TILE_DIM, "p-2 relative border-r border-gray-200 font-normal text-gray-500 grid place-items-center"])}>
+      {text}
+    </div>
   )
 }
 
@@ -28,11 +74,11 @@ export default async function AdminCalendar() {
     const tilesQuantity = 8 * 9;
     const rowLength = 8;
 
-    tiles.push(<Tile text="" />);
+    tiles.push(<DayTile time={undefined} />);
 
     for (let i = 1; i < tilesQuantity; i++) {
       if (i < rowLength) {
-        tiles.push(<Tile text={`${days[time.day()]} - ${time.format("DD/MM")}`} />);
+        tiles.push(<DayTile time={time} />);
         time = time.add(1, "day");
         continue;
       }
@@ -50,19 +96,17 @@ export default async function AdminCalendar() {
           dayjs(t.date).hour() === hour.hour() ||
           (hour.isBefore(dayjs(t.endDate)))
         ));
-      tiles.push(<Tile text={`${turn?.clientName || ""}\n${turn?.employee || ""}`} />);
+      tiles.push(turn ? <DateTile turn={turn} /> : <Tile text="" />);
       time = time.add(1, "day");
     }
 
     return tiles;
   }
 
-  const days = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"];
-
   return (
     <div>
       <h1>CALENDAR</h1>
-      <section className="grid grid-cols-8 font-semibold">
+      <section className="grid grid-cols-8 w-[1400px] mx-auto font-semibold bg-white">
         {
           drawTiles()
         }
