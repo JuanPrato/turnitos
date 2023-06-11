@@ -5,6 +5,14 @@ module.exports = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  safelist: [
+    'min-h-[100px]',
+    'min-h-[200px]',
+    'min-h-[300px]',
+    'min-h-[400px]',
+    'min-h-[500px]',
+    'min-h-[600px]',
+  ],
   theme: {
     extend: {
       backgroundImage: {
