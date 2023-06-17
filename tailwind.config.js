@@ -6,12 +6,12 @@ module.exports = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   safelist: [
-    'min-h-[100px]',
-    'min-h-[200px]',
+    'min-h-[75px]',
+    'min-h-[150px]',
+    'min-h-[225px]',
     'min-h-[300px]',
-    'min-h-[400px]',
-    'min-h-[500px]',
-    'min-h-[600px]',
+    'min-h-[375px]',
+    'min-h-[450px]',
   ],
   theme: {
     extend: {
