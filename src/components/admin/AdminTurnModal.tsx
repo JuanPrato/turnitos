@@ -1,6 +1,6 @@
 "use client"
 
-import { Turn } from "@/app/admin/dashboard/turns/Table";
+import { Turn } from "@/utils/supabase-server";
 import dayjs from "dayjs";
 import { useRef } from "react";
 
